@@ -1,6 +1,7 @@
-diff -Nrup xutils-dev-7.7+5.orig/imake/imakemdep.h xutils-dev-7.7+5/imake/imakemdep.h
---- xutils-dev-7.7+5.orig/imake/imakemdep.h	2015-02-04 19:47:42.000000000 +0800
-+++ xutils-dev-7.7+5/imake/imakemdep.h	2022-05-06 10:56:44.236334225 +0800
+Index: xutils-dev-7.7.2/imake/imakemdep.h
+===================================================================
+--- xutils-dev-7.7.2.orig/imake/imakemdep.h
++++ xutils-dev-7.7.2/imake/imakemdep.h
 @@ -426,6 +426,9 @@ const char *cpp_argv[ARGUMENTS] = {
  #    ifdef __SH4NOFPU__
  	"-D__SH4_NOFPU__",
@@ -24,9 +25,10 @@ diff -Nrup xutils-dev-7.7+5.orig/imake/imakemdep.h xutils-dev-7.7+5/imake/imakem
  	/* add any additional symbols before this line */
  	{NULL, NULL}
  };
-diff -Nrup xutils-dev-7.7+5.orig/makedepend/imakemdep.h xutils-dev-7.7+5/makedepend/imakemdep.h
---- xutils-dev-7.7+5.orig/makedepend/imakemdep.h	2015-02-04 19:47:42.000000000 +0800
-+++ xutils-dev-7.7+5/makedepend/imakemdep.h	2022-05-06 11:05:03.608621631 +0800
+Index: xutils-dev-7.7.2/makedepend/imakemdep.h
+===================================================================
+--- xutils-dev-7.7.2.orig/makedepend/imakemdep.h
++++ xutils-dev-7.7.2/makedepend/imakemdep.h
 @@ -455,6 +455,12 @@ static const struct symtab	predefs[] = {
  #if defined (__BUILTIN_VA_ARG_INCR)
  	{"__BUILTIN_VA_ARG_INCR", "1"},
@@ -40,9 +42,10 @@ diff -Nrup xutils-dev-7.7+5.orig/makedepend/imakemdep.h xutils-dev-7.7+5/makedep
  	/* add any additional symbols before this line */
  	{NULL, NULL}
  };
-diff -Nrup xutils-dev-7.7+5.orig/xorg-cf-files/Imake.cf xutils-dev-7.7+5/xorg-cf-files/Imake.cf
---- xutils-dev-7.7+5.orig/xorg-cf-files/Imake.cf	2016-01-26 21:14:12.000000000 +0800
-+++ xutils-dev-7.7+5/xorg-cf-files/Imake.cf	2022-05-06 11:10:35.390089598 +0800
+Index: xutils-dev-7.7.2/xorg-cf-files/Imake.cf
+===================================================================
+--- xutils-dev-7.7.2.orig/xorg-cf-files/Imake.cf
++++ xutils-dev-7.7.2/xorg-cf-files/Imake.cf
 @@ -1037,6 +1037,16 @@ XCOMM Keep cpp from replacing path eleme
  #   define AArch64Architecture
  #   undef __aarch64__
@@ -60,9 +63,10 @@ diff -Nrup xutils-dev-7.7+5.orig/xorg-cf-files/Imake.cf xutils-dev-7.7+5/xorg-cf
  #endif /* linux || __GLIBC__ */
  
  #if (defined(__Lynx__) || defined(Lynx)) && (defined(i386) || defined(__i386__) || defined(__x86__) || defined(__powerpc__) || defined(__sparc__) || defined(sparc))
-diff -Nrup xutils-dev-7.7+5.orig/xorg-cf-files/linux.cf xutils-dev-7.7+5/xorg-cf-files/linux.cf
---- xutils-dev-7.7+5.orig/xorg-cf-files/linux.cf	2022-05-06 11:08:29.409535129 +0800
-+++ xutils-dev-7.7+5/xorg-cf-files/linux.cf	2022-05-06 10:53:14.665320177 +0800
+Index: xutils-dev-7.7.2/xorg-cf-files/linux.cf
+===================================================================
+--- xutils-dev-7.7.2.orig/xorg-cf-files/linux.cf
++++ xutils-dev-7.7.2/xorg-cf-files/linux.cf
 @@ -290,11 +290,12 @@ InstallNamedTargetNoClobber(install,file
  #  endif /* i386Architecture */
  /* Glide3 only works on alpha, amd64, i386 and ia64. */
@@ -78,16 +82,16 @@ diff -Nrup xutils-dev-7.7+5.orig/xorg-cf-files/linux.cf xutils-dev-7.7+5/xorg-cf
  #  endif /* LinuxArchitecture */
  
  /* Enable extended instruction set support. */
-@@ -500,6 +501,8 @@ InstallNamedTargetNoClobber(install,file
+@@ -506,6 +507,8 @@ InstallNamedTargetNoClobber(install,file
  #    define BuildXF86DRI	NO
  #  elif defined(AMD64Architecture)
  #    define BuildXF86DRI	YES
-+#  elif defined(Sw64Architecture)
++#  elif defined(Sw6464Architecture)
 +#    define BuildXF86DRI	YES
  #  else
  #    define BuildXF86DRI	NO
  #  endif
-@@ -867,6 +870,13 @@ InstallNamedTargetNoClobber(install,file
+@@ -873,6 +876,13 @@ InstallNamedTargetNoClobber(install,file
  #   define LdCmd                 CcCmd -nostdlib
  #   define AsmDefines            -D__ELF__
  #  endif /* AMD64Architecture */
@@ -101,7 +105,7 @@ diff -Nrup xutils-dev-7.7+5.orig/xorg-cf-files/linux.cf xutils-dev-7.7+5/xorg-cf
  # else
  #  define CcCmd			gcc
  #  define AsCmd			CcCmd -c -x assembler
-@@ -1111,6 +1121,18 @@ InstallNamedTargetNoClobber(install,file
+@@ -1117,6 +1127,18 @@ InstallNamedTargetNoClobber(install,file
  # define ServerExtraDefines    -DGCCUSESGAS XFree86ServerDefines -D_XSERVER64
  #endif /* AArch64Architecture */
  
@@ -120,9 +124,10 @@ diff -Nrup xutils-dev-7.7+5.orig/xorg-cf-files/linux.cf xutils-dev-7.7+5/xorg-cf
  #ifndef StandardDefines
  # ifdef __linux__
  #  define StandardDefines	-Dlinux LinuxMachineDefines LinuxSourceDefines
-diff -Nrup xutils-dev-7.7+5.orig/xorg-cf-files/xfree86.cf xutils-dev-7.7+5/xorg-cf-files/xfree86.cf
---- xutils-dev-7.7+5.orig/xorg-cf-files/xfree86.cf	2022-05-06 11:08:29.379534996 +0800
-+++ xutils-dev-7.7+5/xorg-cf-files/xfree86.cf	2022-05-06 10:42:40.292243112 +0800
+Index: xutils-dev-7.7.2/xorg-cf-files/xfree86.cf
+===================================================================
+--- xutils-dev-7.7.2.orig/xorg-cf-files/xfree86.cf
++++ xutils-dev-7.7.2/xorg-cf-files/xfree86.cf
 @@ -815,7 +815,7 @@ VENDORMANVERSION = XVendorManVersionStri
  /*
   * DEC Alpha drivers
@@ -132,9 +137,10 @@ diff -Nrup xutils-dev-7.7+5.orig/xorg-cf-files/xfree86.cf xutils-dev-7.7+5/xorg-
  # ifndef XF86Server
  #  define XF86Server		YES
  # endif
-diff -Nrup xutils-dev-7.7+5.orig/xorg-cf-files/xorg.cf xutils-dev-7.7+5/xorg-cf-files/xorg.cf
---- xutils-dev-7.7+5.orig/xorg-cf-files/xorg.cf	2022-05-06 11:08:29.379534996 +0800
-+++ xutils-dev-7.7+5/xorg-cf-files/xorg.cf	2022-05-06 11:04:07.158368913 +0800
+Index: xutils-dev-7.7.2/xorg-cf-files/xorg.cf
+===================================================================
+--- xutils-dev-7.7.2.orig/xorg-cf-files/xorg.cf
++++ xutils-dev-7.7.2/xorg-cf-files/xorg.cf
 @@ -314,7 +314,8 @@ RELEASE_VERSION = ReleaseVersion
      defined(Sparc64Architecture) || defined(MipsArchitecture) || \
      defined(AlphaArchitecture) || defined(PpcArchitecture) || \
